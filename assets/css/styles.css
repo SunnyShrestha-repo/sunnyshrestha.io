@@ -1,0 +1,193 @@
+
+:root{
+  /* --bg: #0b0d10; */
+  --bg: #f2f2f2;
+  --panel: rgba(255,255,255,0.08);
+  --text: #e9eef5;
+  --muted: #b9c2cf;
+  --accent: #7dd3fc;
+  --ring: rgba(125,211,252,0.5);
+  --maxw: 1024px;
+}
+
+/* Image block */
+.hero-image{
+  display: flex;
+  justify-content: center;
+}
+
+.hero-image img{
+  width: 220px;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.25),
+    0 0 0 4px rgba(255,255,255,0.6);
+}
+
+@media (max-width: 768px){
+  .hero-split{
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image{
+    order: -1; /* image goes above text on mobile */
+  }
+
+  .hero-image img{
+    width: 180px;
+    height: 180px;
+  }
+}
+
+/* Background image layer */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  /* background-image: var(--bg-image, none); */
+  background-image: url('../img/home-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  filter: brightness(1) saturate(1.1);
+}
+
+/* Subtle overlay for readability */
+body::after{
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(11,13,16,0.6), rgba(11,13,16,0.9));
+}
+
+*{ box-sizing: border-box; }
+html, body{ height: 100%; }
+body{
+  margin: 0;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+.container{
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 0 auto;
+  padding: 2rem 1rem 4rem;
+}
+
+.site-header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.logo{
+  display: inline-flex;
+  width: 2.25rem; height: 2.25rem;
+  align-items: center; justify-content: center;
+  border-radius: 12px;
+  background: var(--panel);
+  color: var(--text);
+  text-decoration: none;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.1) inset;
+}
+
+.nav{ display: flex; gap: 0.75rem; }
+.nav-link{
+  color: var(--text);
+  text-decoration: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 10px;
+  opacity: 0.9;
+}
+.nav-link.active, .nav-link:hover{
+  background: var(--panel);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+.hero{
+  padding: 8vh 0 6vh;
+}
+h1, h2, h3{
+  line-height: 1.2;
+  margin: 0 0 0.5rem 0;
+}
+h1{ font-size: clamp(1.8rem, 2.4rem, 3rem); }
+h2{ font-size: clamp(1.2rem, 1.4rem, 1.6rem); margin-top: 1.5rem; }
+
+.lead{ color: var(--muted); max-width: 60ch; }
+
+.cta{ margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+.btn{
+  appearance: none;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
+  background: #1f2937;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 0 0 2px rgba(255,255,255,0.08) inset;
+}
+.btn:hover{ box-shadow: 0 0 0 2px var(--ring); }
+.btn-secondary{ background: #0f172a; }
+
+.pill{
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text);
+  text-decoration: none;
+  margin-right: 0.35rem;
+  margin-top: 0.35rem;
+  font-size: 0.92rem;
+}
+
+.cards{
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  margin-top: 1rem;
+}
+.card{
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.06);
+  box-shadow: 0 1px 0 rgba(255,255,255,0.08) inset, 0 0 0 1px rgba(255,255,255,0.06) inset;
+}
+
+.timeline{ list-style: none; padding: 0; margin: 0.5rem 0 0; }
+.timeline li{ padding: 0.5rem 0; border-left: 2px solid rgba(255,255,255,0.15); margin-left: 0.75rem; padding-left: 0.75rem; }
+.muted{ color: var(--muted); }
+
+.resume-box{
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border-radius: 16px;
+  background: rgba(125,211,252,0.08);
+  box-shadow: 0 0 0 1px var(--ring) inset;
+}
+
+.site-footer{
+  max-width: var(--maxw);
+  margin: 2rem auto 1rem;
+  padding: 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+.accent{ color: var(--accent); }
